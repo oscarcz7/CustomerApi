@@ -3,6 +3,15 @@ using CustomerApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:8100").AllowAnyHeader()
+                                                  .AllowAnyMethod(); ;
+        });
+});
 
 builder.Services.Configure<DatabaseSettings>(
     builder.Configuration.GetSection("CustomerOrderDatabase"));
@@ -29,6 +38,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
