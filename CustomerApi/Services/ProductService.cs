@@ -43,6 +43,8 @@ namespace CustomerApi.Services
                 { "_id", 1 },
                 { "CategoryId", 1},
                 { "ProductName",1 },
+                { "UnitPrice",1 },
+                { "UnitInStock",1 },
                 { "CategoryName", "$product_category.CategoryName" }
               })
             };
